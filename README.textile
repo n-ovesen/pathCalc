@@ -1,7 +1,9 @@
 h1. PathCalc
 
-Author: Nikolai Andre Ek Ovesen
-Email: nikolai.ovesen@gmail.com
+	AUTHOR:		Nikolai Andre Ek Ovesen
+	EMAIL:		nikolai.ovesen@gmail.com
+	GIT:		https://github.com/n-ovesen/
+	Web:		nikolaiovesen.com
 
 h2. Summary
 
