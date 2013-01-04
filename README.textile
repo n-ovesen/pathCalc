@@ -1,0 +1,42 @@
+h1. PathCalc
+
+Author: Nikolai Andre Ek Ovesen
+Email: nikolai.ovesen@gmail.com
+
+h2. Summary
+
+Some project I have going on for shits and giggles, at some stage it will be able to calculate the shortest/best path between waypoints, god knows what algorithm I'll use.
+
+h2. Getting Started
+
+Seriously, there is nothing to start yet.....
+
+h3. Software
+
+If you for some reason want to, compile and run, needs to use the upcomming standard g++0x or gnu++0x
+
+h2. Commenting Guidelines
+
+File comment template:
+
+pre. /*
+ *	FILE:	foo.bar
+ *	General description..............
+ *
+ *	AUTHOR:	Nikolai Andre Ek Ovesen
+ *	EMAIL:	nikolai.ovesen@gmail.com
+ *	GIT:	https://github.com/n-ovesen/
+ *	Web:	nikolaiovesen.com
+ */
+
+Function comment template:
+
+pre. /*
+ *	foo() more speciffic description
+ */	
+
+Function prototype comment template:
+
+pre. /*
+ *	Brief description of functionality
+ */
