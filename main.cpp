@@ -1,6 +1,6 @@
-/* 
- * File:   main.cpp
- * Author: Nikolai
+/**
+ * @File:   main.cpp
+ * @Author: Nikolai
  *
  * Created on 4. januar 2013, 02:57
  */
@@ -10,7 +10,7 @@
 
 using namespace std;
 
-/*
+/**
  * 
  */
 int main(int argc, char** argv) {

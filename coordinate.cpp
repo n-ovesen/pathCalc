@@ -1,4 +1,4 @@
-/* 
+/*** 
  * File:   coordinate.cpp
  * Author: Nikolai
  * 
@@ -9,9 +9,11 @@
 
 using namespace std;
 
-/*
- *      Function: init(int)
- *      initializes 
+/**
+ *      @Function: init(int)
+ *      calls functions to read csvFile,
+ *      parse it and return the vectors to
+ *      this class
  */
 
 bool coordinate::init(int m){

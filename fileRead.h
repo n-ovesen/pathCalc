@@ -1,4 +1,4 @@
-/* 
+/*
  * File:   fileRead.h
  * Author: Nikolai
  *
@@ -38,5 +38,5 @@ private:
     
 };
 
-#endif	/* FILEREAD_H */
+#endif	/*** FILEREAD_H */
 

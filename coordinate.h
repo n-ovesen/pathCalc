@@ -1,4 +1,4 @@
-/* 
+/**
  * File:   coordinate.h
  * Author: Nikolai
  *
