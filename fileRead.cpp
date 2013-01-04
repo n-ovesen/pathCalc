@@ -12,15 +12,43 @@ using namespace std;
 /**
  *      @Function: getVector(vector<float>& v1, vector<float>& v2)
  *      copies the lat and lon vectors within the class to temporary vectors
- *      v1 and v2 and returns these by passing them as a reference
- * 
- *      TODO: delete lat & lon to save memory usage   
+ *      v1 and v2, clears lat and lon vectors and returns v1 and v2
+ *      by passing them as a reference.  
  */
 
 void fileRead::getVector(vector<float>& v1, vector<float>& v2) {
+    
     v1 = lat;
     v2 = lon;
+    
+    lat.clear();
+    lon.clear();
+    
+    //TODO: sort out full c++0x support and implement .shrink_to_fit()
+    
     return;
+}
+
+/**
+ *      @Function: getVectLen()
+ *      Returns the size of the vectors lat and lon by simply calling the
+ *      stl vector function .size, doing a check if both vectors are the same
+ *      size and then returns the size of the vectors, if the vector sizes are
+ *      unequal the function will return 0
+ */
+
+int fileRead::getVectLen(){
+    
+    int s1 = lat.size();
+    int s2 = lon.size();
+    
+    if (s1 != s2){
+        return 0;
+    }
+    
+    else {
+        return (s1 + s2) / 2;
+    }
 }
 
 /**
@@ -104,24 +132,4 @@ void fileRead::print(){
     cout << endl;*/
 }
 
-/**
- *      @Function: getVectLen()
- *      Returns the size of the vectors lat and lon by simply calling the
- *      stl vector function .size, doing a check if both vectors are the same
- *      size and then returns the size of the vectors, if the vector sizes are
- *      unequal the function will return 0
- */
 
-int fileRead::getVectLen(){
-    
-    int s1 = lat.size();
-    int s2 = lon.size();
-    
-    if (s1 != s2){
-        return 0;
-    }
-    
-    else {
-        return (s1 + s2) /** 2;
-    }
-}

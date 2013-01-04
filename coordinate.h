@@ -23,19 +23,27 @@ class coordinate {
     
 public:
     
-    bool init(int);
     bool init();
     void add(float, float);
     float get();
     void printVectors();
             
 private:
-    vector<float> lat;
-    vector<float> lon;
     
-    fileRead fRead;
+    struct waypoint{
+        float lat, lon;
+        int next, prev;
+        bool visited;
+    };
     
+    vector<waypoint> wpt;
+    
+    vector<float> tempLat;
+    vector<float> tempLon;    
+    fileRead fRead;    
     bool initialised;
+    
+
 };
 
 #endif	/* COORDINATE_H */
