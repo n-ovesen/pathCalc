@@ -3,7 +3,7 @@ h1. PathCalc
 	AUTHOR:		Nikolai Andre Ek Ovesen
 	EMAIL:		nikolai.ovesen@gmail.com
 	GIT:		https://github.com/n-ovesen/
-	Web:		nikolaiovesen.com
+	Web:		http://nikolaiovesen.com
 
 h2. Summary
 
