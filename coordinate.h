@@ -14,6 +14,7 @@
 #include <string>
 #include <fstream>
 #include <sstream>
+#include <math.h>
 
 #include "fileRead.h"
 
@@ -24,24 +25,31 @@ class coordinate {
 public:
     
     bool init();
-    void add(float, float);
-    float get();
+    void add(double, double);
+    double get();
     void printVectors();
+    double distanceInMeters(double, double, double, double);
             
 private:
     
+    //used for great circle calculations, do not change!
+    static constexpr double DEG_TO_RAD = 0.017453292519943295769236907684886;
+    static constexpr double EARTH_RADIUS_IN_METERS = 6372797.560856;
+    
     struct waypoint{
-        float lat, lon;
+        double lat, lon;
         int next, prev;
         bool visited;
     };
     
-    vector<waypoint> wpt;
-    
-    vector<float> tempLat;
-    vector<float> tempLon;    
+    vector<waypoint> wpt;    
+    vector<double> tempLat;
+    vector<double> tempLon;    
     fileRead fRead;    
     bool initialised;
+    
+    double arcInRadians(double, double, double, double);
+    
     
 
 };

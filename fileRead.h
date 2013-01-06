@@ -21,20 +21,20 @@ using namespace std;
 class fileRead {
 public:
     
-    void getVector(vector<float>& v1, vector<float>& v2);
+    void getVector(vector<double>& v1, vector<double>& v2);
     int getVectLen();
     void readFile(string f);
     void print();
     
 private:
 
-    vector<float> lat;
-    vector<float> lon;
+    vector<double> lat;
+    vector<double> lon;
         
     ifstream csvFile;
     string buf;
         
-    void parseLine(string s, float& lat, float& lon);
+    void parseLine(string s, double& lat, double& lon);
     
 };
 

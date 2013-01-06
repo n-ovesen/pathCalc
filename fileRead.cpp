@@ -10,13 +10,17 @@
 using namespace std;
 
 /**
- *      @Function: getVector(vector<float>& v1, vector<float>& v2)
- *      copies the lat and lon vectors within the class to temporary vectors
- *      v1 and v2, clears lat and lon vectors and returns v1 and v2
- *      by passing them as a reference.  
+ * @function: public getVector()
+ * copies the lat and lon vectors within the class to temporary vectors
+ * v1 and v2, clears lat and lon vectors and returns v1 and v2
+ * by passing them as a reference.  
+ * 
+ * @param v1    -       temporary vector used for passing vectors as a reference
+ * @param v2    -       temporary vector used for passing vectors as a reference
+ * @return      -       returns temporary vectors v1 and v2 as references
  */
 
-void fileRead::getVector(vector<float>& v1, vector<float>& v2) {
+void fileRead::getVector(vector<double>& v1, vector<double>& v2) {
     
     v1 = lat;
     v2 = lon;
@@ -30,11 +34,12 @@ void fileRead::getVector(vector<float>& v1, vector<float>& v2) {
 }
 
 /**
- *      @Function: getVectLen()
- *      Returns the size of the vectors lat and lon by simply calling the
- *      stl vector function .size, doing a check if both vectors are the same
- *      size and then returns the size of the vectors, if the vector sizes are
- *      unequal the function will return 0
+ * @function: public getVectLen()
+ * Returns the size of the vectors lat and lon by simply calling the
+ * stl vector function .size, doing a check if both vectors are the same
+ * size and then returns the size of the vectors, if the vector sizes are
+ * unequal the function will return 0
+ * @return 
  */
 
 int fileRead::getVectLen(){
@@ -52,15 +57,18 @@ int fileRead::getVectLen(){
 }
 
 /**
- *      @Function: parseLine(string s, float& lat, float& lon)
- *      receives string s from readFile function, parses it into variables
- *      float lat and float lon and returns them to readFile()
- *      by passing them as a reference
+ * @function: private parseLine()
+ * receives string s from readFile function, parses it into variables
+ * double lat and double lon and returns them to readFile()
+ * by passing them as a reference
  * 
- *      @TODO: nothing afaik 
+ * @param s     -       string to be parsed
+ * @param lat   -       used to return parsed lat as a reference
+ * @param lon   -       used to return parsed lon as a reference
  */
 
-void fileRead::parseLine(string s, float& lat, float& lon){
+void fileRead::parseLine(string s, double& lat, double& lon){
+    
     string slat, slon;
     istringstream liness( s );
     getline( liness, slat, ',' );
@@ -71,22 +79,21 @@ void fileRead::parseLine(string s, float& lat, float& lon){
 
     return;
 }
-
+   
 /**
- *      @Function: readFile(string f)
- *      opens file 'f' that is passed to function by function call
- *      does some simple checking of file integrity and reads each line into
- *      a temporary string variable that is passed to parseLine() and returned
- *      by passing references to variables flat and flon that is pushed into
- *      vectors lat and lon for temporary storage.
+ * @function: public readFile()
+ * opens file 'f' that is passed to function by function call
+ * does some simple checking of file integrity and reads each line into
+ * a temporary string variable that is passed to parseLine() and returned
+ * by passing references to variables flat and flon that is pushed into
+ * vectors lat and lon for temporary storage.
  * 
- *      @TODO: consider if it is worth it to store varables in vector of struct
- *      containing float lat, lon.
+ * @param f     -       name of file to be opened
  */
-    
+
 void fileRead::readFile(string f){
     
-    float flat, flon;    
+    double flat, flon;    
     csvFile.open(f);
     
     if(!csvFile) {
@@ -105,10 +112,10 @@ void fileRead::readFile(string f){
 }
 
 /**
- *      @Function: print()
- *      testing function to print out lat and lon vectors by iteration
+ * @function: public print()
+ * testing function to print out lat and lon vectors by iteration
  * 
- *      @TODO: get rid of this
+ * @todo: get rid of it
  */
     
 void fileRead::print(){
@@ -122,14 +129,6 @@ void fileRead::print(){
     
     cout << endl;
     
-    /*cout << "printing lon" << endl;
-    cout << "buffer capacity = " << lon.size() << endl;
-        
-    for (unsigned int i = 0; i < lon.size(); i++){
-        cout << "       buffer[" << i << "] " << lon.at(i) << endl;
-    }      
-    
-    cout << endl;*/
 }
 
 

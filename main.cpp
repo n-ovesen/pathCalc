@@ -23,7 +23,9 @@ int main(int argc, char** argv) {
     cout << "HAI" << endl;
     
     coord.init();
-    coord.printVectors();
+    /*coord.printVectors();*/
+    
+    cout << coord.distanceInMeters(63.513816,10.140329,63.456647,10.204187) << endl;
     
     return 0;
 }

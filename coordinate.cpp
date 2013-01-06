@@ -10,14 +10,17 @@
 using namespace std;
 
 /**
- *      @Function: init()
- *      calls function within fileRead class to read and parse the csv file
- *      containing coordinates, allocates space of size s to the vectors tempLat
- *      and tempLon that temporarily store the data returned from the getVector
- *      function within the fileRead class and then copies the data to the vectors
- *      lat and lon within the vector wpt containing the struct waypoint,
- *      then it returns 'true' so that one can later check that init has been called
- *      as nothing will work properly unless it has been called.
+ * @function init()
+ * 
+ * initializes various required functionality for the class and also calls
+ * read file function within fileRead class and returns the vectors containing
+ * the data from the csv file.
+ * 
+ * then it places the data from the csv file into a vector of waypoint structs
+ * accordingly
+ * 
+ * @return      -       returns true to allow checking that the initialization
+ *                      was successful.
  */
 
 bool coordinate::init(){
@@ -44,13 +47,55 @@ bool coordinate::init(){
     return initialised;
 }
 
-void coordinate::add(float flat, float flon){    
+/**
+ * @function: private arcInRadians()
+ * 
+ * Uses the law of haversine to calculate the great circle distance between
+ * coordinates
+ * 
+ * @param latFrom       -       latitude of coordinate from
+ * @param lonFrom       -       longitude of coordinate from
+ * @param latTo         -       latitude of coordinate to
+ * @param lonTo         -       longitude of coordinate to
+ * @return              -       the arc in radians
+ */
+
+double coordinate::arcInRadians(double latFrom, double lonFrom, double latTo, double lonTo) {
+    double latitudeArc  = (latFrom - latTo) * DEG_TO_RAD;
+    double longitudeArc = (lonFrom - lonTo) * DEG_TO_RAD;
+    double latitudeH = sin(latitudeArc * 0.5);
+    latitudeH *= latitudeH;
+    double lontitudeH = sin(longitudeArc * 0.5);
+    lontitudeH *= lontitudeH;
+    double tmp = cos(latFrom*DEG_TO_RAD) * cos(latTo*DEG_TO_RAD);
+    return 2.0 * asin(sqrt(latitudeH + tmp*lontitudeH));
+}
+
+/**
+ * @function: public distanceInMeters()
+ * 
+ * takes in parameters mentioned below, multiplies the earth radius in meters
+ * with the returned value from @function arcInRadians() and returns it as a
+ * distance in meters
+ * 
+ * @param latFrom       -       latitude of coordinate from
+ * @param lonFrom       -       longitude of coordinate from
+ * @param latTo         -       latitude of coordinate to
+ * @param lonTo         -       longitude of coordinate to
+ * @return              -       returns the distance between the coordiantes in meters
+ */
+
+double coordinate::distanceInMeters(double latFrom, double lonFrom, double latTo, double lonTo) {
+    return EARTH_RADIUS_IN_METERS*arcInRadians(latFrom, lonFrom, latTo, lonTo);
+}
+
+void coordinate::add(double flat, double flon){    
 
     tempLat.push_back(flat);
     tempLon.push_back(flon);
 }
 
-float coordinate::get(/*int i*/) {
+double coordinate::get(/*int i*/) {
         
     return 1;
 }
