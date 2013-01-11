@@ -89,15 +89,51 @@ double coordinate::distanceInMeters(double latFrom, double lonFrom, double latTo
     return EARTH_RADIUS_IN_METERS*arcInRadians(latFrom, lonFrom, latTo, lonTo);
 }
 
+/**
+ * @function: public nearestWaypt()
+ * 
+ * takes in current waypoint, calculates distance to all other waypoints in 
+ * vector of waypoints and returns the id of the nearest waypoint
+ *  
+ * @param wptCur        -       current waypoint
+ * @return              -       returns the ID of the nearest waypoint
+ * 
+ * @todo:       figure out if it is needed to store the distance to nearest waypoint.
+ */
+
+int coordinate::nearestWaypt(int wptCur) {
+
+    double latCur, lonCur, curShortest, d;
+    curShortest = 40000000; //40000000 is roughly the circumference of the earth
+    int id = 0;
+    coordinate::getPos(wptCur, latCur, lonCur);
+    
+    for(int i = 0; i < wpt.size(); i++) {
+        d = coordinate::distanceInMeters(latCur, lonCur, wpt.at(i).lat, wpt.at(i).lon);
+        
+        cout << "dist to: [" << i << "] is: " << d << endl;
+        
+        if (i != wptCur) {            
+            if (d < curShortest) {
+                curShortest = d;
+                id = i;
+            }
+        } 
+    }
+    
+    return id;
+}
+
 void coordinate::add(double flat, double flon){    
 
     tempLat.push_back(flat);
     tempLon.push_back(flon);
 }
 
-double coordinate::get(/*int i*/) {
-        
-    return 1;
+void coordinate::getPos(int i, double& lat, double& lon) {
+    lat = wpt.at(i).lat;
+    lon = wpt.at(i).lon;
+    return;
 }
 
 void coordinate::printVectors() {

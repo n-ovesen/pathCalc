@@ -25,7 +25,9 @@ int main(int argc, char** argv) {
     coord.init();
     /*coord.printVectors();*/
     
-    cout << coord.distanceInMeters(63.513816,10.140329,63.456647,10.204187) << endl;
+    int nearest = coord.nearestWaypt(0);
+    
+    cout << "nearest coordinate is: [" << nearest << "]" << endl;
     
     return 0;
 }

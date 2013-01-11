@@ -26,9 +26,10 @@ public:
     
     bool init();
     void add(double, double);
-    double get();
+    void getPos(int, double&, double&);
     void printVectors();
     double distanceInMeters(double, double, double, double);
+    int nearestWaypt(int current);
             
 private:
     
@@ -40,6 +41,7 @@ private:
         double lat, lon;
         int next, prev;
         bool visited;
+        string name;
     };
     
     vector<waypoint> wpt;    
